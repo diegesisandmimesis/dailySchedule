@@ -2,6 +2,16 @@
 //
 // dailySchedule.t
 //
+//	An extension to the calendar and targetEngine modules for implementing
+//	NPC daily schedules.
+//
+//
+// USAGE
+//
+//	The module defines a DailyActivity class.  Instances can be
+//	added either to an actor or to a DailySchedule instance on an
+//	actor.  Daily
+//
 #include <adv3.h>
 #include <en_us.h>
 
@@ -20,10 +30,13 @@ class DailyScheduleObject: Syslog syslogID = 'DailySchedule';
 class DailySchedule: DailyScheduleObject, AgendaItem
 	agendaOrder = 700
 
-	initiallyActive = true
+	scheduleID = nil
+	initiallyActive = nil
 
 	dailyActivityClass = DailyActivity
 	_dailyActivities = nil
+
+	isDefaultSchedule = nil
 
 	isReady = (getCurrentActivity() != nil)
 

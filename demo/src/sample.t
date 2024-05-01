@@ -54,15 +54,8 @@ modify bedroom;
 
 modify alice location = aliceHouse;
 +DailyActivity 'work' [ 'morning', 'afternoon', 'evening' ] @aliceShop
-	startActivity() {
-		mainReport('Alice starts work for the day. ');
-	}
-	endActivity() {
-		mainReport('Alice finishes work for the day. ');
-	}
-	activityAction() {
-		mainReport('Alice does some work. ');
-	}
+	startActivity() { mainReport('Alice starts work for the day. '); }
+	endActivity() { mainReport('Alice finishes work for the day. '); }
+	activityAction() { mainReport('Alice does some work. '); }
 ;
-+DailyActivity 'home' [ 'night', 'early' ] @aliceHouse
-;
++DailyActivity 'home' [ 'night', 'early' ] @aliceHouse;
