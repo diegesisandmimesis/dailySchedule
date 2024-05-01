@@ -43,7 +43,26 @@ gameMain: GameMainDef
 	initialPlayerChar = me
 	inlineCommand(cmd) { "<b>&gt;<<toString(cmd).toUpper()>></b>"; }
 	printCommand(cmd) { "<.p>\n\t<<inlineCommand(cmd)>><.p> "; }
+	newGame() {
+		gCalendar.setDailyCycle(simpleDay);
+		runGame(true);
+	}
 ;
 
-startRoom: Room 'Void' "This is a featureless void.";
+modify bedroom;
 +me: Person;
+
+modify alice location = aliceHouse;
++DailyActivity 'work' [ 'morning', 'afternoon', 'evening' ] @aliceShop
+	startActivity() {
+		mainReport('Alice starts work for the day. ');
+	}
+	endActivity() {
+		mainReport('Alice finishes work for the day. ');
+	}
+	activityAction() {
+		mainReport('Alice does some work. ');
+	}
+;
++DailyActivity 'home' [ 'night', 'early' ] @aliceHouse
+;
