@@ -21,31 +21,31 @@
 
 #include "dailySchedule.h"
 
-versionInfo: GameID
-        name = 'dailySchedule Library Demo Game'
-        byline = 'Diegesis & Mimesis'
-        desc = 'Demo game for the dailySchedule library. '
-        version = '1.0'
-        IFID = '12345'
-	showAbout() {
-		"This is a simple test game that demonstrates the features
-		of the dailySchedule library.
-		<.p>
-		Consult the README.txt document distributed with the library
-		source for a quick summary of how to use the library in your
-		own games.
-		<.p>
-		The library source is also extensively commented in a way
-		intended to make it as readable as possible. ";
-	}
-;
+versionInfo: GameID;
 gameMain: GameMainDef
 	initialPlayerChar = me
+
 	inlineCommand(cmd) { "<b>&gt;<<toString(cmd).toUpper()>></b>"; }
 	printCommand(cmd) { "<.p>\n\t<<inlineCommand(cmd)>><.p> "; }
+
 	newGame() {
 		gCalendar.setDailyCycle(simpleDay);
-		runGame(true);
+		inherited();
+	}
+	showIntro() {
+		"In this demo, Alice has a simple daily schedule in which
+		she goes to her shop in town during the day and returns
+		home at night. ";
+		"<.p> ";
+		"Use <<inlineCommand('advance time')>> to skip to the next
+		slot in the daily cycle (afternoon becomes evening,
+		evening becomes night, and so on).  You can also
+		use <<inlineCommand('check time')>> to view the current time
+		period. ";
+		"<.p> ";
+		"The demo uses the system time as the starting time for
+		the game. ";
+		"<.p> ";
 	}
 ;
 
